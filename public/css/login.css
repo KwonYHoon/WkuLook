@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "LG Smart UI"
+}
+
+.wrap {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(#1cbacf, #aebbd3);
+}
+
+.login {
+    width: 550px;
+    height: 600px;
+    background: #ffffff;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login_dic{
+    margin-bottom: 50px;
+}
+
+h2 {
+    color: #425872;
+    font-size: 2em;
+}
+
+.id {
+    margin-top:20px;
+    width: 80%;
+}
+
+.id input {
+    font-size: 100%;
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    margin-top: 10px;
+    padding: 0px 20px;
+    border: 1px solid lightblue;
+    outline: none;
+}
+
+.pw {
+    margin-top: 20px;
+    width: 80%;
+}
+.pw input {
+    font-size: 100%;
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding: 0px 20px;
+    border: 1px solid lightblue;
+    outline: none;
+}
+
+.submit {
+    margin-top: 20px;
+    width: 80%;
+}
+
+.submit input {
+    width: 100%;
+    height: 50px;
+    border: 0;
+    outline: none;
+    border-radius: 40px;
+    background: #189fb1;
+    color: white;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+}
+
+.login_etc {
+    width: 80%;
+}
+
+.auto_login {
+    float:left;
+}
+
+.forgot_pw {
+    float:right;
+}
+
+.caution {
+    margin-top: 50px;
+}

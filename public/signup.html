@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/signup.css">
+    <script src="js/signup.js"></script>
+    <title>회원가입</title>
+</head>
+<body>
+    <main>
+    <div class="wrap">
+        <div class="information">
+            <div class="i1">
+                <h4>Join Membership</h4>
+             <div class="id">
+                아이디<input type="text" id="username" name="username">
+         </div>
+        <div class="pw">
+            비밀번호<input type="password" id="pw" name="pw">
+        </div>
+        <div class="pw_check">
+            비밀번호 확인<input type="password" id="pw_check" name="pw_check">
+        </div>
+        <div class="address">
+            주소<input type="text" id="address" name="address">
+        </div>
+        <div class="school_info">
+            소속 대학<input type="text" id="school_info" name="school_info">
+        </div>
+        <div class="phone">
+            휴대폰 번호
+        <div class="phone_number" id="phone_num" name="phone_num">
+             <input id="phone1" type="text" name="tel1" size="3" maxlength="3"> -
+            <input id="phone2" type="text" name="tel2" size="4" maxlength="4"> -
+            <input id="phone3" type="text" name="tel3" size="4" maxlength="4">
+        </div>
+        <div class="gender">
+            성별
+            <br>
+            <input type="checkbox" name="gender" value="male" onclick='checkOnlyOne(this)'> 남성
+            <input type="checkbox" name="gender" value="female" onclick='checkOnlyOne(this)'> 여성
+        </div>
+      </div>
+      <div class="line">
+        <hr>
+      </div>
+      <div class="signup">
+        <button id="signUpButton" onclick = "signUpCheck()">가입하기</button>
+      </div>
+      <div class="back">
+        <button type="button" onclick = "back_confirm()">뒤로가기</button>
+      </div>
+    </div>
+</div>
+</main>
+</body>
+</html>

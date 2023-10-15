@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Community_board_form.css">
+    <script src="js/Community_board_form.js"></script>
+    <title>wkuLook :: 글 쓰기</title>
+</head>
+<body>
+
+    <script defer src="/__/firebase/9.22.0/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/9.22.0/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.22.0/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/9.22.0/firebase-storage-compat.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+      import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+      import { getStorage } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-storage.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDTfoH9278HHWixlHcXOuq8Wuf7qLWVgkg",
+        authDomain: "wkulook.firebaseapp.com",
+        projectId: "wkulook",
+        storageBucket: "wkulook.appspot.com",
+        messagingSenderId: "817039994276",
+        appId: "1:817039994276:web:b21923feba0d1354d26531"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      const storage = getStorage(app, "gs://wkulook.appspot.com");
+
+      //데이터 가져오는 방법
+      import { collection, getDocs, addDoc, Timestamp  } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+      
+      const usersCollectionRef = await collection(db, "board");
+      const on_btn = document.getElementById('on');
+
+      on_btn.addEventListener('click', function(){
+        addDoc(usersCollectionRef, {
+                글 : $('#content').val(), 
+                작성자 : $('#Name').val(),
+                제목 : $('#title').val(),
+                조회수 : 0,
+                좋아요 : 0,
+                날짜 : new Date(),
+                태그 : $('#Tag').val()
+      }).then(docRef => {
+            location.href = './Community.html';
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    })
+      </script>
+
+
+    <!-- 윗 배너 -->
+    <header>
+        <div class = "top-menu">
+            <div class = "main-wrapper">
+                <div class="search">
+                    <input id="search" type="text" placeholder="검색어 입력">
+                    <img id="search-img" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+                  </div>
+
+                <div class = "ttitle">
+                    <a href = "./index.html" class = "Logo">
+                        <img id="title-img"src = "./images/Logo.png" alt="" height="80px">
+                    </a>
+                </div>
+            </div>
+
+            <div class = "right-top-menu">
+                <a href = "./login2.html" id = "login">로그인</a>
+                <a id = "login-bar">|</a>
+                <a href = "./signup.html" id = "sign-up">회원가입</a>
+                <a id = "login-bar">|</a>
+                <a href = "#" id = "bookmark">즐겨찾기</a>
+            </div>
+        </div>
+
+        <div class = "select-menu">
+            <a href = "./top.html" id = "top-ten-category">인기순위</a>
+            <a id = "caterory-bar">|</a>
+            <a href = "./style.html" id = "style-category">스타일</a>
+            <a id = "caterory-bar">|</a>
+            <a href = "./Community.html" id = "share-category"><strong>공유 게시판</strong></a>
+            <a id = "caterory-bar">|</a>
+            <a href = "./Community.html" id = "Q&A-category">물어봐요</a>
+        </div>
+    </header>
+    <!-- 메인 -->
+    <main>
+
+    <!-- 게시글 본문 -->
+    <div class="board_box">
+        <div class="board_title">
+           <h3>게시글 쓰기</h3>
+        </div>
+        <li>
+        <span class="title">
+            제목
+            <br>
+            <input type="text" id="title" name="title">
+        </span>
+        </li>
+        <li>
+            <span class="Name">
+                작성자
+                <br>
+                <input type="text" id="Name" name="Name">
+            </span>
+            </li>
+        <li>
+        <span class="content">
+            내용
+            <br>
+            <textarea id="content" name="content" placeholder="내용을 입력해주세요.
+(게시판과 관계 없거나 타인을 비하하는 글을 게시할 경우, 관리자에 의해 게시글이 삭제될 수 있습니다.)"></textarea>
+        </span>
+        </li>
+
+        <li>
+            <span class="Tag">
+                태그
+                <br>
+                <input type="text" id="Tag" name="Tag">
+            </span>
+            </li>
+
+        <!-- 이미지 및 버튼 -->
+        <li>
+            <div class="add_image">
+                <span class="col1">이미지 첨부 : </span>
+                <span class="col2"> <input name="uploadimage" type="file" multiple></span>
+            </div>
+            </li>
+            <li>
+            <div class="bt_wrap">
+                <button id = "on">등록</button>
+                <a href="./Community.html">취소</a>
+            </div>
+            </li>
+    </div>
+    </main>
+
+    <!-- 아래 배너 -->
+    <footer></footer>
+</body>
+</html>
